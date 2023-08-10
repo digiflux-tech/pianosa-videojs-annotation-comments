@@ -17,6 +17,7 @@ module.exports = class PlayerButton extends PlayerUIComponent {
     this.$el.on('click.vac-player-button', () => {
       this.plugin.toggleAnnotationMode();
     });
+    this.plugin.annotationState.nextAnnotation()
   }
 
   // Add button to player
