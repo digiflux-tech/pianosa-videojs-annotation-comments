@@ -205,8 +205,13 @@ module.exports = class AnnotationState extends PlayerComponent {
     }
     const time = Math.floor(this.currentTime);
     for (let i = 0; i < this.annotations.length; i++) {
-      if (this.annotations[i].range.start > time)
+      if (this.annotations[i].range.start > time){
+        let comments = this.annotations.map(a => a.commentList.comments);
+        comments = [].concat(...comments);
+        //set all comments
+        this.annotations[i].commentList.comments = comments;
         return this.openAnnotation(this.annotations[i], true);
+      }
     }
     this.openAnnotation(this.annotations[0], true);
   }
